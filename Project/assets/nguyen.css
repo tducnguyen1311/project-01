@@ -1,0 +1,253 @@
+/* 
+    background-color > bgc:value
+    backgound-image > bgi:value
+    width : 100px > w100
+    heigth : 100px > h100
+*/
+
+
+body {
+  padding: 32px;
+  font-family: 'Montserrat', sans-serif;
+  print-color-adjust: exact; /* In bg */
+  -webkit-print-color-adjust: exact;
+}
+
+.title {
+    font-size: 26px;
+    line-height: 1.5;
+    font-weight: 600;
+}
+
+/* Border */
+
+.box1 {
+    width: 100px;
+    height: 100px;
+    background-color: tomato;
+    border-radius: 50%;
+}
+
+.box2 {
+    width: 110px;
+    height: 110px;
+    background-color: green;
+    border-radius: 50%;
+}
+
+.box3 {
+    width: 120px;
+    height: 120px;
+    background-color: pink;
+    border-radius: 50%;
+}
+
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 10px solid yellow;
+}
+
+.avatar + .avatar {
+    margin-left: -50px;
+}
+
+/* Margin collapse */
+
+/* Ưu tiên dùng display */
+.container {
+    height: 200px;
+    background-color: rgb(119, 78, 84);
+    display: flex;
+}
+
+.heading {
+    background-color: green;
+    margin-top: 50px;
+    display: flex; /* (position : absolute) đưa vào thẻ sau; (display : inline-block) thẻ cha hoặc con; (display : flex) dùng cho thẻ cha  */
+}
+
+.para1 {
+    margin-bottom: 50px;
+    background-color: red;
+    display: flex;
+}
+
+.para2 {
+    background-color: blue;
+    margin-top: 50px;
+    display: flex; /* (position : absolute) đưa vào thẻ sau; (display : inline-block) thẻ cha hoặc con; (display : flex) dùng cho thẻ cha  */
+}
+
+/* Box-sizing */
+
+.box4 {
+    width: 120px;
+    height: 120px;
+    background-color: red;
+    
+    padding: 10px;
+
+    border: 10px solid black;
+
+    margin: 10px;
+}
+
+/* Color */
+
+.box5 {
+    width: 100px;
+    height: 100px;
+    background-image: linear-gradient(45deg, rgb(142, 197, 252) 0%, rgb(141, 211, 255) 25%, rgb(161, 216, 255) 50%, rgb(193, 210, 255) 75%, rgb(224, 195, 255) 100%);
+    
+}
+
+
+/* Background */
+
+.hightlight {
+    color: transparent;
+    margin-top: 20px;    
+    background-image: linear-gradient(90deg, rgb(223, 48, 0) 0%, rgb(255, 145, 37) 16.667%, rgb(218, 217, 154) 33.333%, rgb(114, 224, 232) 50%, rgb(20, 163, 214) 66.667%, rgb(0, 67, 115) 83.333%, rgb(58, 0, 5) 100%);
+    background-color: green;
+    background-clip: text;
+    -webkit-background-clip: text;
+
+}
+
+/*
+background-image: linear-gradient(
+    direction (optional - to bottom),
+    color1 (required) stop1 (optional),
+    color2 (required) stop2 (optional),
+    ...
+);
+
+background-size: cover, contain, 1 giá trị, 2 giá trị (Hiển thị hình ảnh trong khung)
+
+background-position: center center (Nếu chỉ nhập left thì giá trị thứ 2 mặc định là center)
+                     100% 100% (x%,y%)
+                     
+background-image: linear-gradient(90deg, rgb(223, 48, 0) 0%, rgb(255, 145, 37) 16.667%, rgb(218, 217, 154) 33.333%, rgb(114, 224, 232) 50%, rgb(20, 163, 214) 66.667%, rgb(0, 67, 115) 83.333%, rgb(58, 0, 5) 100%);
+
+background-attachment: scroll, fixed, local (Hình ảnh lăn theo chuột or cố định)
+overflow: auto > Thanh cuộn khi nội dung quá nhiều so với chiều cao nội dung
+
+background-clip: padding,border,content-box (Chữ chuyển màu trong CSS)
+
+background-origin: padding,border,content-box > Điểm tọa độ (0;0) ,ko dùng chung với attachment, phụ thuộc vào position
+
+background: bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment initial|inherit;
+
+*/
+
+/* Hiển thị dấu 3 chấm, xuống hàng nội dung
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+*/
+.hightlight > h1 {
+    white-space: 0px;
+}
+
+/* Image */
+
+.cover-img {
+    max-width: 100%;
+    object-position: top center; /* Dùng để canh giữa ảnh (mặc định là 50% 50%) */
+    object-fit: cover; /* Cover : Hiển thị đủ chiều ngang nhưng mất 1 phần bức ảnh, Contain : Hiển thị đủ bức ảnh nhưng sẽ bị thụt lùi 2 bên */
+}
+
+.around p {
+    line-height: 1.6;
+    font-size: 14px;
+}
+
+.around img {
+    float: left; 
+    padding: 10px 20px; 
+}
+
+/* 
+    In bg-color
+
+    Thêm print-color-adjust: exact vào thẻ body
+    -webkit-print-color-adjust: exact cho Chrome
+    @media print {
+        body {
+            print-color-adjust: exact !important;
+            -webkit-print-color-adjust: exact !important;
+        
+        bg-color {
+            background-color: green;
+        }
+    }
+}
+*/
+
+/* Position */
+
+/* 
+    Relative : 
+    Phần tử sẽ nằm trong bố cục luồng và được định vị theo vị trí ban đầu của nó.
+    Sau khi dịch chuyển phần tử khỏi vị trí, không gian ban đầu vẫn được giữ nguyên và không bị phần tử khác thay thế.
+
+    Absolute :
+    1. Không có thẻ cha đc định vị => Định vị theo body
+    2. Có thẻ cha đc định vị => Định vị theo thẻ cha gần nhất (thẻ cha cũng phải đc định vị)
+
+    Fixed :
+    Dùng làm cái menu cố định khi cuộn trang web
+    Hình ảnh, thông báo hiển thị khi truy cập và thao tác giữa trang
+
+    Sticky :
+    
+    Chọn nhiều dòng
+    1.Ctrl Shift L : Chọn hết các thẻ hoặc giá trị giống nhau
+    2.Ctrl > hoặc < để di chuyển
+
+*/
+
+/* Pseudo-element */
+
+/* 
+    ::before ::after
+    Bắt buộc phải có content : ""
+    Chèn nội dung ở trước hoặc sau, có thể css mà k cần thẻ html
+*/
+
+/* Overflow */
+
+/* 
+    Overflow : Tạo thanh cuộn
+    Overscroll-behavior : Cuộn chuỗi
+*/
+
+/* Box-shadow */
+
+/* 
+    Inset : Đổ bóng bên trong
+    Có thể đổ bóng nhiều : box-shadow: 10px 10px red, 10px 10px blue,...
+*/
+
+.notification {
+    width: 50px;
+    margin-top: 50px;
+    position: relative;
+    font-size: 32px;
+    color: #666;
+}
+
+.notification .badge { 
+    position: absolute;
+    color: #fff;
+    background: red;
+    padding: 2px 5px 4px 3px;
+    border-radius: 8px;
+    font-size: 16px;
+    top: -4px;
+    right: 4px;
+    text-align: center;
+}
